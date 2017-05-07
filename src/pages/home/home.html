@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card (tap)="tapEvent($event)">
+    <ion-item>
+      Start sorting
+    </ion-item>
+  </ion-card>
+
+  <ion-item text-wrap>
+    Result: {{hehe}}
+  </ion-item>
+  <ion-item text-wrap>
+    Start time: {{startTime}}
+  </ion-item>
+  <ion-item text-wrap>
+    End time: {{endTime}}
+  </ion-item>
+  <ion-item text-wrap>
+    n: {{jumlahData}}<br>
+    Elapsed time: {{elapsedTime}}ms
+  </ion-item>
+</ion-content>
