@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{ item.title }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-icon [name]="'logo-' + item.icon" [ngStyle]="{'color': item.color}"></ion-icon>
+  {{ item.type }}
+  <form (ngSubmit)="startSort()">
+    <ion-item>
+      <ion-label floating>Jumlah Data</ion-label>
+      <ion-input type="text" [(ngModel)]="form.size" name="size"></ion-input>
+    </ion-item>
+    <div padding>
+      <button ion-button color="primary" type="submit" block>Run</button>
+    </div>
+  </form>
+
+  <ion-item text-wrap *ngIf="startTime">
+    Start time: {{startTime}}
+  </ion-item>
+  <ion-item text-wrap *ngIf="endTime">
+    End time: {{endTime}}
+  </ion-item>
+  <ion-item text-wrap *ngIf="elapsedTime">
+    n: {{size}}<br>
+    Elapsed time: {{elapsedTime}}ms
+  </ion-item>
+  <ion-item text-wrap *ngIf="size < 100000">
+    Result: {{hehe}}
+  </ion-item>
+</ion-content>
