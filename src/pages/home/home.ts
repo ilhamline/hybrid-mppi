@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { QuickSortRunner, BubbleSortRunner, QueensProblemRunner } from './algorithms';
 
 @Component({
   templateUrl: 'sorting.html',
@@ -20,12 +21,16 @@ export class SortingPage {
 
   startSort() {
     this.size = parseInt(this.form.size);
+    var arr = [];
+    for (var i=0, t=this.size; i<t; i++) {
+      arr.push(Math.round(Math.random() * 1000))
+    }
     switch (this.item.type) {
       case 'bubbleSort':
-        this.bubbleSort();
+        this.bubbleSort(arr);
         break;
       case 'quickSort':
-        this.quickSort();
+        this.quickSort(arr);
         break;
       case 'nQueens':
         this.nQueens();
@@ -33,18 +38,26 @@ export class SortingPage {
     }
   }
 
-  bubbleSort() {
+  bubbleSort(arr) {
+    var runner = new BubbleSortRunner;
+    var sTime = Date.now();
+    runner.run(arr);
+    var eTime = Date.now();
 
+    this.startTime = new Date(sTime).toString();
+    this.endTime = new Date(eTime).toString();
+    this.elapsedTime = (eTime-sTime).toString();
+    if (this.size < 100000) {
+      this.hehe = arr.toString()
+    }
   }
 
-  quickSort() {
-    var arr = [];
-    for (var i=0, t=this.size; i<t; i++) {
-      arr.push(Math.round(Math.random() * t))
-    }
+  quickSort(arr) {
+    var runner = new QuickSortRunner;
     var sTime = Date.now();
-    arr = arr.sort();
+    runner.run(arr, 0, arr.length);
     var eTime = Date.now();
+
     this.startTime = new Date(sTime).toString();
     this.endTime = new Date(eTime).toString();
     this.elapsedTime = (eTime-sTime).toString();
@@ -54,7 +67,17 @@ export class SortingPage {
   }
 
   nQueens() {
+    var runner = new QueensProblemRunner;
+    var sTime = Date.now();
+    var result = runner.run(this.size);
+    var eTime = Date.now();
 
+    this.startTime = new Date(sTime).toString();
+    this.endTime = new Date(eTime).toString();
+    this.elapsedTime = (eTime-sTime).toString();
+    if (this.size < 100000) {
+      this.hehe = result;
+    }
   }
 }
 

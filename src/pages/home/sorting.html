@@ -7,8 +7,6 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-icon [name]="'logo-' + item.icon" [ngStyle]="{'color': item.color}"></ion-icon>
-  {{ item.type }}
   <form (ngSubmit)="startSort()">
     <ion-item>
       <ion-label floating>Jumlah Data</ion-label>
@@ -29,7 +27,9 @@
     n: {{size}}<br>
     Elapsed time: {{elapsedTime}}ms
   </ion-item>
-  <ion-item text-wrap *ngIf="size < 100000">
-    Result: {{hehe}}
+  <ion-item text-wrap *ngIf="elapsedTime">
+    <!-- Result: {{hehe}} -->
+    Result:
+    <div [innerHTML] = "'<p>' + hehe + '</p>'"></div>
   </ion-item>
 </ion-content>
