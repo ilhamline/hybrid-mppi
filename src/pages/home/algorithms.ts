@@ -1,7 +1,6 @@
 export class QuickSortRunner {
   run(arr, left, right){
-    var len = arr.length,
-    pivot,
+    var pivot,
     partitionIndex;
 
 

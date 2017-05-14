@@ -24,7 +24,7 @@ export class SortingPage {
   }
 
   startSort() {
-    let subscription = this.batteryStatus.onChange().subscribe(
+    this.batteryStatus.onChange().subscribe(
       (status) => {
         this.drainedLevel++;
         this.batteryLevel = status.level;
