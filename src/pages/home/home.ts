@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { BatteryStatus } from '@ionic-native/battery-status';
 import { QuickSortRunner, BubbleSortRunner, QueensProblemRunner } from './algorithms';
 
 @Component({
@@ -14,12 +15,22 @@ export class SortingPage {
   public startTime: string;
   public endTime: string;
   public elapsedTime: string;
+  public drainedLevel: number;
+  public batteryLevel: number;
 
-  constructor(params: NavParams) {
+  constructor(params: NavParams, private batteryStatus: BatteryStatus) {
     this.item = params.data.item;
+    this.drainedLevel = 0
   }
 
   startSort() {
+    let subscription = this.batteryStatus.onChange().subscribe(
+      (status) => {
+        this.drainedLevel++;
+        this.batteryLevel = status.level;
+        console.log(status.level, status.isPlugged);
+      }
+    );
     this.size = parseInt(this.form.size);
     var arr = [];
     for (var i=0, t=this.size; i<t; i++) {
@@ -82,21 +93,7 @@ export class SortingPage {
 }
 
 @Component({
-  template: `
-            <ion-header>
-              <ion-navbar>
-                <ion-title>Home</ion-title>
-              </ion-navbar>
-            </ion-header>
-            <ion-content>
-              <ion-list>
-                <button ion-item *ngFor="let item of items" (click)="openSortingPage(item)" icon-left>
-                  <ion-icon [name]="'logo-' + item.icon" [ngStyle]="{'color': item.color}" item-left></ion-icon>
-                  {{ item.title }}
-                </button>
-              </ion-list>
-            </ion-content>
-            `
+  templateUrl: 'home.html',
 })
 export class HomePage {
   items = [];

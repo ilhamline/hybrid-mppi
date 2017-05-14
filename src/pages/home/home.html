@@ -6,8 +6,7 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="openSortingPage(item)" icon-left>
-      <ion-icon [name]="'logo-' + item.icon" [ngStyle]="{'color': item.color}" item-left></ion-icon>
+    <button ion-item *ngFor="let item of items" (click)="openSortingPage(item)">
       {{ item.title }}
     </button>
   </ion-list>

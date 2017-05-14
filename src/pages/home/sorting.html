@@ -27,6 +27,12 @@
     n: {{size}}<br>
     Elapsed time: {{elapsedTime}}ms
   </ion-item>
+  <ion-item text-wrap>
+    Battery Level: {{batteryLevel}}
+  </ion-item>
+  <ion-item text-wrap>
+    Drained: {{drainedLevel}}
+  </ion-item>
   <ion-item text-wrap *ngIf="elapsedTime">
     <!-- Result: {{hehe}} -->
     Result:
