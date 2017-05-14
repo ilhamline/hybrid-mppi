@@ -85,7 +85,7 @@ export class SortingPage {
     this.startTime = new Date(sTime).toString();
     this.endTime = new Date(eTime).toString();
     this.elapsedTime = (eTime-sTime).toString();
-    if (this.size < 100000) {
+    if (this.size <= 5) {
       this.hehe = result;
     }
   }
