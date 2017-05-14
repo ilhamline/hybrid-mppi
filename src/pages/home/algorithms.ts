@@ -67,7 +67,11 @@ export class QueensProblemRunner {
   enumerate2(q, k) {
     var n = q.length;
     if (k == n) {
-      return this.printQueens(q);
+      if (n <= 5) {
+        return this.printQueens(q);
+      } else {
+        return '';
+      }
     }
     else {
       var result = '';

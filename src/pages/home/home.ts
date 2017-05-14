@@ -90,7 +90,13 @@ export class SortingPage {
   nQueens() {
     var runner = new QueensProblemRunner;
     var sTime = Date.now();
-    var result = runner.run(this.size);
+    for (var i=0; i<3; i++) {
+      if (this.size <= 5) {
+        var result = runner.run(this.size);
+      } else {
+        runner.run(this.size);
+      }
+    }
     var eTime = Date.now();
 
     this.startTime = new Date(sTime).toString();
