@@ -9,7 +9,6 @@ import { QuickSortRunner, BubbleSortRunner, QueensProblemRunner } from './algori
 export class SortingPage {
   item;
   form = { size: '' };
-  public tap: number = 0;
   public size: number;
   public hehe: string;
   public startTime: string;
