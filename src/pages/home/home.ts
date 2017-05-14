@@ -23,6 +23,7 @@ export class SortingPage {
   }
 
   startSort() {
+    this.clearInstance();
     this.batteryStatus.onChange().subscribe(
       (status) => {
         this.drainedLevel++;
@@ -46,6 +47,16 @@ export class SortingPage {
         this.nQueens();
         break;
     }
+  }
+
+  clearInstance() {
+    this.size = 0;
+    this.hehe = '';
+    this.startTime = '';
+    this.endTime = '';
+    this.elapsedTime = '';
+    this.drainedLevel = 0;
+    this.batteryLevel = 0;
   }
 
   bubbleSort(arr) {
